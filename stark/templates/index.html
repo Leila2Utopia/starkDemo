@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="site">
+                            Site administration
+                        </div>
+                        {% for appName,appCla in app_D.items %}
+                            <div class="panel panel-info">
+
+                                <div class="panel-heading">
+                                    <a href="{% url 'index' appName %}">{{ appName }}</a>
+                                </div>
+                                <div class="panel-body">
+                                    {% for foo in appCla %}
+                                        <div>
+                                            <a href="{{ appName }}/{{ foo }}">
+                                                {{ foo }}
+                                            </a>
+                                        </div>
+                                        <hr>
+
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
